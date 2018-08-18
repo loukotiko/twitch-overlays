@@ -1,0 +1,134 @@
+:root {
+	--main-color: #438ca5;
+	--dark-color: #376f82;
+	--red-color: #7D1E3D;
+	--border-size: 6px;
+	font-family: 'Signika', sans-serif;
+}
+
+body {
+	background: red;
+}
+
+.cam-border {
+	width: 640px;
+	height: 360px;
+	border: var(--border-size) solid var(--main-color);
+	position: absolute;
+	top: 200px;
+	left: 30px;
+	background: black;
+	color: var(--red-color);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 64px;
+}
+
+.cam-header {
+	position: absolute;
+	top: 0;
+	left: calc(var(--border-size) * -1);
+	right: calc(var(--border-size) * -1);
+	background: var(--main-color);
+	margin: 0;
+	padding: 0;
+	display: flex;
+	align-items: flex-center;
+	flex-direction: row;
+	list-style-type: none;
+	transform: translateY(-100%);
+	font-size: 32px;
+}
+
+.cam-header label {
+	flex: 1;
+	color: white;
+	padding-top: 8px;
+	padding-bottom: 10px;
+	text-align: center;
+	font-size: 1.2em;
+	background: var(--main-color);
+	transition: all .5s;
+}
+
+.cam-header label .tooltip {
+	position: absolute;
+	transform: translateY(calc(-100% - 20px));
+	background: white;
+	color: #000;
+	left: 0;
+	right: 0;
+	text-align: center;
+	line-height: 1em;
+	font-size: 0.9em;
+	padding: 20px;
+	z-index: 2;
+	opacity: 0;
+	transition: all .5s;
+}
+
+.cam-header label .tooltip b {
+	color: var(--main-color);
+}
+
+.cam-header input:checked+label {
+	background: var(--dark-color);
+}
+
+.cam-header input:checked+label .tooltip {
+	opacity: 1;
+}
+
+.cam-header #mic+label .fa-microphone-slash {
+	display: none;
+	color: var(--red-color);
+}
+
+.cam-header #mic:checked+label .fa-microphone {
+	display: none;
+}
+
+.cam-header #mic:checked+label .fa-microphone-slash {
+	display: inline;
+}
+
+.cam-header input:checked~#mic+label::before {
+	opacity: 0;
+}
+
+#date .date {
+	display: none;
+}
+
+.cam-header label::before {
+	content: '';
+	display: block;
+	position: relative;
+	top: -16px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 14px 16px 0 16px;
+	border-color: #ffffff transparent transparent transparent;
+	margin-bottom: -10px;
+	opacity: 0;
+	transition: all .5s;
+}
+
+.cam-header input:checked+label::before {
+	opacity: 1;
+}
+
+.cam-header #mic+label .tooltip {
+	z-index: 1;
+}
+
+.cam-header .tooltip h, .cam-header input {
+	position: absolute;
+	opacity: 0;
+	top: -9999;
+	left: -9999;
+}

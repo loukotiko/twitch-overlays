@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+	 crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Signika" rel="stylesheet">
+
+	<link rel="stylesheet" href="./cam-overlay-style.css">
+</head>
+
+<body>
+	<div class="cam-border">
+		<span class="fas fa-video-slash"></span>
+		<div class="cam-header">
+			<input type="radio" id="discord" name="tab">
+			<label for="discord" onclick="CamOverlay.activate('discord')">
+				<span class="fab fa-discord"></span>
+				<span class="tooltip">Venez vous amuser et discuter avec nous sur <b><h>https://</h>discord.gg/gPYeCvS</b></span>
+			</label>
+			<input type="radio" id="instagram" name="tab">
+			<label for="instagram" onclick="CamOverlay.activate('instagram')">
+				<span class="fab fa-instagram"></span>
+				<span class="tooltip">Retrouvez nos dessins sur <b><h>https://www.</h>instagram.com/loukodil</b></span>
+			</label>
+			<input type="radio" id="wattpad" name="tab">
+			<label for="wattpad" onclick="CamOverlay.activate('wattpad')">
+				<span class="fas fa-pen-nib"></span>
+				<span class="tooltip">Retrouvez nos histoires sur <b><h>https://www.</h>wattpad.com/user/tikoati</b></span>
+			</label>
+			<input type="checkbox" id="mic" name="mic">
+			<label for="mic" onclick="CamOverlay.toggleMute()">
+				<span class="fas fa-microphone-slash"></span>
+				<span class="fas fa-microphone"></span>
+				<span class="tooltip">Mon micro est coupé car je suis en mode <b>concentration</b></span>
+			</label>
+			<label id="date">
+				<span class="text">
+					<span class="hour"></span><span class="date"></span>
+				</span>
+			</label>
+		</div>
+	</div>
+
+	<script src="http://cdn.tmijs.org/js/latest/1.x/tmi.min.js"></script>
+	<script src="cam-overlay.js"></script>
+</body>
+
+</html>
