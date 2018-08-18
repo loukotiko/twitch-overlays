@@ -6,8 +6,8 @@ let options = {
         reconnect: true
     },
     identity: {
-        username: 'tikoati',
-        password: 'oauth:kts2ljaxt74zhxjnq7pfh9lsauw3yp'
+        username: 'loukotiko',
+        password: 'oauth:f0cfu3t7juvuu80pqn2y0d75fdirzu'
     },
     channels: ['#loukotiko']
 }
