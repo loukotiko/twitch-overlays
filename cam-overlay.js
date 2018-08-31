@@ -3,7 +3,8 @@ let options = {
         debug: true
     },
     connection: {
-        reconnect: true
+        reconnect: true,
+        secure: true
     },
     identity: {
         username: 'loukotiko',
