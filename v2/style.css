@@ -1,0 +1,120 @@
+:root {
+  --background-color: #84d4d2;
+  --text-color: #efece6;
+  --other-text-color: #423d3a;
+
+  --width: 25vw;
+}
+
+body {
+  background: url(../assets/screen.png);
+  background-size: cover;
+
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.logo {
+  position: absolute;
+  width: 8vw;
+  height: 8vw;
+  top: 1vw;
+  right: 1vw;
+
+  opacity: .5;
+  transition: opacity .5s 3s;
+
+  z-index: 2;
+}
+
+.message {
+  display: inline-block;
+
+  background: var(--background-color);
+  border-radius: 1vw;
+  font-family: 'Lilita One', cursive;
+  font-size: 1.2vw;
+  padding: .7vw 1vw;
+  text-align: center;
+
+  position: absolute;
+  top: 5vw;
+  right: 5vw;
+  transform: translateY(-50%);
+
+  display: none;
+
+  overflow: hidden;
+  z-index: 1;
+}
+
+.message.active ~ .logo {
+  opacity: 1;
+  animation: logo-rotate 1s, logo-rotate reverse .5s 7s;
+
+  transition: opacity 0s;
+}
+
+@keyframes logo-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.message.active {
+  display: block;
+  animation: open-message 1s forwards, open-message reverse .5s 7s forwards;
+}
+
+@keyframes open-message {
+  0% {
+    width: 0;
+    padding-right: 0;  
+  }
+  100% {
+    width: var(--width);
+    padding-right: 5vw;
+  }
+}
+
+.message .text {
+  display: inline-block;
+
+  width: var(--width);
+
+  color: var(--text-color);
+}
+
+.message .text h {
+  display: none;
+}
+
+.message .text b {
+  display: block;
+  font-weight: normal;
+  color: var(--other-text-color);
+}
+
+.datetime {
+  font-family: 'Lilita One', cursive;
+  font-size: 1vw;
+
+  position: absolute;
+  bottom: 1vw;
+  right: 1vw;
+  width: 8vw;
+  text-align: center;
+
+  background: var(--background-color);
+  color: var(--text-color);
+  border-radius: 2vw;
+
+  padding: .4vw;
+
+  box-sizing: border-box;
+}
+
+[date] {
+  display: block;
+  font-size: 0.8vw;
+}
