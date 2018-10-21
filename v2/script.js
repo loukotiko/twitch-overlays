@@ -11,6 +11,36 @@ let uq = () => {
     if(next) next.fn(...next.args)
 }
 
+function formatEmotes(text, emotes) {
+    var splitText = text.split('');
+    for (var i in emotes) {
+      var e = emotes[i];
+      for (var j in e) {
+        var mote = e[j];
+        if (typeof mote == 'string') {
+          mote = mote.split('-');
+          mote = [parseInt(mote[0]), parseInt(mote[1])];
+          var length = mote[1] - mote[0],
+            empty = Array.apply(null, new Array(length + 1)).map(function() {
+              return '';
+            });
+          splitText = splitText
+            .slice(0, mote[0])
+            .concat(empty)
+            .concat(splitText.slice(mote[1] + 1, splitText.length));
+          splitText.splice(
+            mote[0],
+            1,
+            '<img class="emoticon" src="http://static-cdn.jtvnw.net/emoticons/v1/' +
+              i +
+              '/3.0">',
+          );
+        }
+      }
+    }
+    return splitText.join('');
+  }
+
 window.CamOverlay = new function () {
     CamOverlay = this
 
@@ -61,7 +91,8 @@ window.CamOverlay = new function () {
         let pop = elements.pops(id)
 
         CamOverlay.display(id)
-        client.say(options.channels[0], pop.innerText)
+
+        if(!pop.hasAttribute('no-msg')) client.say(options.channels[0], pop.innerText)
     })
 
     CamOverlay.display = id => {
@@ -131,7 +162,7 @@ setInterval(getFollowers, followersInterval)
 
 let randomInterval = 15*60000
 setInterval(() => {
-    let randomPops = ['instagram', 'discord']
+    let randomPops = ['instagram', 'discord', 'love']
     CamOverlay.displayCustom(randomPops[Math.floor(randomPops.length * Math.random())])
 }, randomInterval)
 
@@ -139,7 +170,7 @@ setInterval(() => {
 window.addEventListener('keypress', event => {
     if(event.keyCode == 97) CamOverlay.displayCustom('instagram')
     if(event.keyCode == 122) CamOverlay.displayCustom('discord')
-    if(event.keyCode == 101) CamOverlay.displayCustom('wattpad')
+    if(event.keyCode == 101) CamOverlay.displayCustom('love')
     if(event.keyCode == 114) CamOverlay.displaySubscribe('???', 'Akatpat', '???', 'Trop bien la vie avec vous, on se fait kiffer notre vie !', '???')
     if(event.keyCode == 116) CamOverlay.displayResub()
     if(event.keyCode == 121) CamOverlay.displayHosted()

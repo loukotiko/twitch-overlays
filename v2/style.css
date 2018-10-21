@@ -55,6 +55,11 @@ body {
   transition: opacity 0s;
 }
 
+.message .emoticon {
+  vertical-align: middle;
+  width: 2vw;
+}
+
 @keyframes logo-rotate {
   100% {
     transform: rotate(360deg);
@@ -86,7 +91,12 @@ body {
 }
 
 .message .text h {
-  display: none;
+  display: block;
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  top: 9999px;
+  left: 9999px;
 }
 
 .message .text b {
