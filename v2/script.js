@@ -87,12 +87,12 @@ window.CamOverlay = new function () {
         uq()
     })
 
-    CamOverlay.displayCustom = q(id => {
+    CamOverlay.displayCustom = q((id, shouldSay) => {
         let pop = elements.pops(id)
 
         CamOverlay.display(id)
 
-        if(!pop.hasAttribute('no-msg')) client.say(options.channels[0], pop.innerText)
+        if(shouldSay) client.say(options.channels[0], pop.innerText)
     })
 
     CamOverlay.display = id => {
@@ -139,7 +139,7 @@ client.on('message', (channel, userstate, message, self) => {
     console.log({channel, userstate, message, self});
     if (self || !message) return
 
-    ['instagram', 'wattpad', 'discord'].forEach(id => !!message.startsWith('!' + id) && CamOverlay.displayCustom(id))
+    ['instagram', 'wattpad', 'discord'].forEach(id => !!message.startsWith('!' + id) && CamOverlay.displayCustom(id, true))
 })
 
 client.on('subscription', CamOverlay.displaySubscribe)
