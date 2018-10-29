@@ -23,7 +23,7 @@ function formatEmotes(text, emotes) {
           var length = mote[1] - mote[0],
             empty = Array.apply(null, new Array(length + 1)).map(function() {
               return '';
-            });
+            }); 
           splitText = splitText
             .slice(0, mote[0])
             .concat(empty)
@@ -113,7 +113,7 @@ window.CamOverlay = new function () {
         elements.date.innerHTML = now.format('dddd DD/MM');
     }
 
-    setTimeout(displayDate, 1000)
+    setInterval(displayDate, 1000)
 }
 
 let options = {
